@@ -1,63 +1,70 @@
-/* Body styling for the background */
+/* Consolidated and cleaned up CSS */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Body Styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Formula1-Regular', sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #1e1f28, #101218); /* Dark Red Bull-inspired gradient */
-    color: #fff; /* White text for contrast */
+    background: url('back.png');
+    background-repeat: repeat;
+    background-size: cover;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-  
-  .button {
-    background: linear-gradient(145deg, #f5f5f5, #e0e0e0); /* Light glossy gradient */
-    padding: 20px 40px;
-    border-radius: 30px;
-    color: #333;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(145deg, #e0e0e0, #f5f5f5); /* Slight hover effect */
-  }
-  
-  /* Container for the countdown */
-  .countdown-container {
-    background: rgba(255, 255, 255, 0.1);
+    transition: margin-left 0.3s;
+}
+
+
+/* Formula1 Fonts Import */
+@font-face {
+    font-family: 'Formula1-Wide';
+    src: url('Fonts/Formula1-Wide.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Formula1-Regular';
+    src: url('Fonts/Formula1-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Formula1-Bold';
+    src: url('Fonts/Formula1-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Formula1-Black';
+    src: url('Fonts/Formula1-Black.ttf') format('truetype');
+}
+
+/* Countdown Container */
+.countdown-container {
+    background: #121f45;
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
     backdrop-filter: blur(10px);
-    color: white;
     margin-top: 20px;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .countdown-text {
+}
+
+.countdown-text {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-family: 'Formula1-Bold', sans-serif;
     margin-bottom: 20px;
-  }
-  
-  .countdown-units {
+}
+
+.countdown-units {
     display: flex;
     justify-content: center;
     gap: 20px;
-  }
-  
-  .countdown-unit {
+}
+
+.countdown-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,34 +72,229 @@ body {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  .countdown-unit span {
+}
+
+.countdown-unit span {
+    font-family: 'Formula1-Bold', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
-  }
-  
-  .countdown-unit label {
+}
+
+.countdown-unit label {
+    font-family: 'Formula1-Bold', sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
-  }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 768px) {
+    color: #bbb;
+}
+
+/* Buttons */
+.button {
+    font-family: 'Formula1-Wide', sans-serif;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #f44336, #101218);
+    padding: 20px 40px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #c62828, #b71c1c);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Navbar */
+.navbar {
+    background-color: #121f45;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0; /* Hide middle line */
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30px;
+    width: 30px;
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    text-align: left;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: block;
+
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #222;
+    margin-left: 20px;
+}
+
+.dropdown-content a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+.dropdown-content.active {
+    display: block;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 468px) {
+    /* Make Countdown text smaller */
     .countdown-text {
-      font-size: 2rem;
+        font-size: 2rem;
     }
+
+    /* Adjust countdown unit font size */
     .countdown-unit span {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .countdown-text {
-      font-size: 1.5rem;
+
+
+    .content.active {
+        margin-left: 0;
     }
-    .countdown-unit span {
-      font-size: 1rem;
+
+    /* Adjust the layout of the countdown units on smaller screens */
+    .countdown-units {
+        flex-direction: column;
+        align-items: center;
     }
-  }
-  
+
+    .countdown-unit {
+        margin-bottom: 10px;
+    }
+
+
+}
+
+
+
+.navbar {
+    z-index: 1000; /* Ensures navbar is on top */
+    position: fixed;
+}
+
+.sidebar {
+    z-index: 999; /* Sidebar is just below navbar */
+    position: fixed;
+}
+
+.countdown-container {
+    z-index: 1; /* Keeps countdown below navbar/sidebar */
+    position: relative; /* Default stacking context */
+}
+
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    width: 250px;
+    height: 100vh; /* Ensure sidebar takes full height of the viewport */
+    background-color: #000000;
+    padding-top: 60px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+/* When sidebar is active (visible) */
+.sidebar.active {
+    left: 0;
+}
+
+/* Content inside sidebar (links) */
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    font-family: 'Formula1-Bold', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+/* Links hover effect */
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.stream-button {
+    margin-bottom: 60px; /* Adds space at the bottom */
+    text-align: left;
+}
+
+
